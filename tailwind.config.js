@@ -7,5 +7,18 @@ module.exports = {
   theme: {
     extend: {},
   },
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require('daisyui/src/colors/themes')['[data-theme=light]'],
+          primary: '#E70162',
+          'primary-content': '#FFFFFF',
+          success: '#2D6500',
+        },
+      },
+    ],
+  },
+
   plugins: [require('daisyui')],
 }
