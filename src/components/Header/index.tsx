@@ -1,9 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleUser } from '@fortawesome/free-regular-svg-icons'
 import { faBars, faUser } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
+import DrawerComponent from '../DrawerComponent'
 
-const Header = () => {
+export interface DrawerProps {
+  toggleDrawer: () => void
+  openDrawer: boolean
+}
+
+const Header = ({ toggleDrawer, openDrawer }: DrawerProps) => {
   return (
     <React.Fragment>
       <div className="pt-5 pb-4 border-b-2 border-primary-content/50">
@@ -20,12 +25,16 @@ const Header = () => {
               <p className="text-2xl font-bold">Murilo</p>
             </div>
           </div>
-          <FontAwesomeIcon
-            icon={faBars}
-            className="w-7 h-7 text-primary-content"
-          />
+          <button className="btn btn-sm bg-transparent border-transparent">
+            <FontAwesomeIcon
+              onClick={toggleDrawer}
+              icon={faBars}
+              className="w-7 h-7 text-primary-content"
+            />
+          </button>
         </div>
       </div>
+      <DrawerComponent openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
     </React.Fragment>
   )
 }
